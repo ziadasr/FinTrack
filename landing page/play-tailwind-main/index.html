@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinTrack - Personal Finance Tracker</title>
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              dark: { DEFAULT: '#0a0a0a', 2: '#141414', 3: '#1a1a1a', 4: '#222222' },
+              amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' },
+            },
+            fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          },
+        },
+      }
+    </script>
+    <style>
+      body { font-family: 'Inter', system-ui, sans-serif; }
+      .gradient-text { background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+      .glow { box-shadow: 0 0 60px -12px rgba(245, 158, 11, 0.3); }
+      .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+      .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5); }
+      @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+      .float { animation: float 6s ease-in-out infinite; }
+      @keyframes fade-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+      .fade-up { animation: fade-up 0.8s ease-out forwards; }
+      .fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
+      .fade-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
+      .fade-up-delay-3 { animation-delay: 0.3s; opacity: 0; }
+      .fade-up-delay-4 { animation-delay: 0.4s; opacity: 0; }
+    </style>
+  </head>
+
+  <body class="bg-dark text-zinc-300 antialiased">
+
+    <!-- ====== Navbar ====== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.04] bg-dark/80 backdrop-blur-xl">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl overflow-hidden">
+            <img src="../../public/logo.png" alt="FinTrack" class="w-full h-full object-cover scale-[1.9]" />
+          </div>
+          <span class="text-lg font-bold text-white tracking-tight">FinTrack</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#features" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Features</a>
+          <a href="#how-it-works" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">How It Works</a>
+          <a href="#screenshots" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Preview</a>
+          <a href="#download" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Download</a>
+          <a href="#contact" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Contact</a>
+        </div>
+        <a href="#download" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-amber-500/20">
+          Download Free
+        </a>
+      </div>
+    </nav>
+
+    <!-- ====== Hero Section ====== -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-20">
+      <div class="absolute inset-0">
+        <div class="absolute top-[-20%] right-[-10%] w-[700px] h-[700px] rounded-full bg-gradient-to-br from-amber-500/[0.08] to-amber-700/[0.02] blur-3xl"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-amber-900/10 to-transparent blur-3xl"></div>
+      </div>
+      <div class="absolute inset-0 opacity-[0.015]" style="background-image: radial-gradient(circle at 1px 1px, #fbbf24 1px, transparent 0); background-size: 40px 40px;"></div>
+
+      <div class="relative max-w-6xl mx-auto px-6 py-20 text-center">
+        <div class="fade-up">
+          <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-4 py-1.5 mb-8">
+            <div class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></div>
+            <span class="text-sm font-medium text-amber-400">Free &amp; Open Source</span>
+          </div>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-black text-white leading-[1.1] mb-6 fade-up fade-up-delay-1">
+          Track Your Money<br>
+          <span class="gradient-text">The Smart Way</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed fade-up fade-up-delay-2">
+          A beautiful, private desktop app for managing your personal finances.
+          Track income, expenses, and account balances — all data stays on your device.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-up fade-up-delay-3">
+          <a href="#download" class="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-bold text-base px-8 py-4 rounded-2xl transition-all shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 active:scale-[0.98]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download for Windows
+          </a>
+          <a href="#features" class="inline-flex items-center gap-2 text-zinc-400 hover:text-white font-medium text-base px-6 py-4 rounded-2xl border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.03] transition-all">
+            Learn More
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+        </div>
+
+        <div class="mt-16 fade-up fade-up-delay-4">
+          <div class="relative mx-auto max-w-4xl">
+            <div class="absolute -inset-4 rounded-3xl bg-gradient-to-b from-amber-500/10 to-transparent blur-2xl"></div>
+            <div class="relative bg-dark-2 rounded-2xl ring-1 ring-white/[0.08] overflow-hidden shadow-2xl glow">
+              <div class="flex items-center gap-2 px-4 py-3 border-b border-white/[0.06]">
+                <div class="w-3 h-3 rounded-full bg-rose-500/70"></div>
+                <div class="w-3 h-3 rounded-full bg-amber-500/70"></div>
+                <div class="w-3 h-3 rounded-full bg-emerald-500/70"></div>
+                <span class="ml-2 text-xs text-zinc-600">Finance Tracker</span>
+              </div>
+              <div class="p-8 grid grid-cols-3 gap-4">
+                <div class="bg-dark-3 rounded-xl p-4 ring-1 ring-white/[0.04]">
+                  <div class="w-8 h-8 rounded-lg bg-blue-500/15 flex items-center justify-center mb-3">
+                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2z"/></svg>
+                  </div>
+                  <p class="text-xs text-zinc-500 mb-1">Savings Account</p>
+                  <p class="text-lg font-bold text-white font-mono">EGP 22,150</p>
+                </div>
+                <div class="bg-dark-3 rounded-xl p-4 ring-1 ring-white/[0.04]">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center mb-3">
+                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                  </div>
+                  <p class="text-xs text-zinc-500 mb-1">This Month Income</p>
+                  <p class="text-lg font-bold text-emerald-400 font-mono">EGP 8,500</p>
+                </div>
+                <div class="bg-gradient-to-br from-amber-500/15 to-dark-3 rounded-xl p-4 ring-1 ring-amber-500/10">
+                  <div class="w-8 h-8 rounded-lg bg-amber-500/15 flex items-center justify-center mb-3">
+                    <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  </div>
+                  <p class="text-xs text-zinc-500 mb-1">Total Balance</p>
+                  <p class="text-lg font-bold text-amber-400 font-mono">EGP 25,100</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Features Section ====== -->
+    <section id="features" class="py-24 relative">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="text-amber-500 font-semibold text-sm uppercase tracking-wider">Features</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3 mb-4">Everything you need to manage your money</h2>
+          <p class="text-zinc-400 max-w-xl mx-auto">Simple, powerful, and private. No subscriptions, no cloud — just you and your finances.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-dark-2 rounded-2xl p-7 ring-1 ring-white/[0.06] card-hover">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-5 shadow-lg shadow-blue-500/20">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Multi-Account Tracking</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Manage bank accounts, cash, and wallets in one place. See all your balances at a glance.</p>
+          </div>
+
+          <div class="bg-dark-2 rounded-2xl p-7 ring-1 ring-white/[0.06] card-hover">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center mb-5 shadow-lg shadow-emerald-500/20">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Monthly Summary</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">See your spending patterns with pie charts and category breakdowns. Know where your money goes.</p>
+          </div>
+
+          <div class="bg-dark-2 rounded-2xl p-7 ring-1 ring-white/[0.06] card-hover">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center mb-5 shadow-lg shadow-amber-500/20">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Custom Categories</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Organize transactions your way. Create color-coded categories for income and expenses.</p>
+          </div>
+
+          <div class="bg-dark-2 rounded-2xl p-7 ring-1 ring-white/[0.06] card-hover">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-violet-600 flex items-center justify-center mb-5 shadow-lg shadow-violet-500/20">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">100% Private</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Your data never leaves your computer. No cloud, no servers, no tracking. It's your data.</p>
+          </div>
+
+          <div class="bg-dark-2 rounded-2xl p-7 ring-1 ring-white/[0.06] card-hover">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-rose-600 flex items-center justify-center mb-5 shadow-lg shadow-rose-500/20">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Arabic &amp; English</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Full bilingual support with RTL layout. Switch between Arabic and English with one click.</p>
+          </div>
+
+          <div class="bg-dark-2 rounded-2xl p-7 ring-1 ring-white/[0.06] card-hover">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center mb-5 shadow-lg shadow-cyan-500/20">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">EGP Currency</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Built for Egyptian Pound with proper formatting. Track your finances in your local currency.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== How It Works Section ====== -->
+    <section id="how-it-works" class="py-24 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/[0.02] to-transparent"></div>
+      <div class="relative max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="text-amber-500 font-semibold text-sm uppercase tracking-wider">How It Works</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3 mb-4">Up and running in 3 steps</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto mb-5">
+              <span class="text-2xl font-black text-amber-400">1</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Install the App</h3>
+            <p class="text-zinc-400 text-sm">Download and run the installer. No dependencies needed — it's fully self-contained.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto mb-5">
+              <span class="text-2xl font-black text-amber-400">2</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Create Your Account</h3>
+            <p class="text-zinc-400 text-sm">Set up a username and password. Your account is local — no email or phone needed.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto mb-5">
+              <span class="text-2xl font-black text-amber-400">3</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Start Tracking</h3>
+            <p class="text-zinc-400 text-sm">Add your accounts, categories come pre-loaded. Start recording transactions right away.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Screenshots / Preview Section ====== -->
+    <section id="screenshots" class="py-24 relative">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="text-amber-500 font-semibold text-sm uppercase tracking-wider">Preview</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3 mb-4">Designed for clarity</h2>
+          <p class="text-zinc-400 max-w-xl mx-auto">A clean dark interface that's easy on the eyes. Every screen is designed to show you exactly what matters.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-dark-2 rounded-2xl p-6 ring-1 ring-white/[0.06]">
+            <h3 class="text-sm font-bold text-zinc-400 uppercase tracking-wider mb-4">Dashboard</h3>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between bg-dark-3 rounded-xl p-4 ring-1 ring-white/[0.04]">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-blue-500/15 flex items-center justify-center"><svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div>
+                  <div><p class="text-sm font-semibold text-white">Savings</p><p class="text-xs text-zinc-600">Bank</p></div>
+                </div>
+                <p class="font-mono font-bold text-white">EGP 22,150</p>
+              </div>
+              <div class="flex items-center justify-between bg-dark-3 rounded-xl p-4 ring-1 ring-white/[0.04]">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center"><svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>
+                  <div><p class="text-sm font-semibold text-white">Cash</p><p class="text-xs text-zinc-600">Cash</p></div>
+                </div>
+                <p class="font-mono font-bold text-white">EGP 2,950</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-dark-2 rounded-2xl p-6 ring-1 ring-white/[0.06]">
+            <h3 class="text-sm font-bold text-zinc-400 uppercase tracking-wider mb-4">Recent Transactions</h3>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between py-3 border-b border-white/[0.04]">
+                <div class="flex items-center gap-3">
+                  <div class="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
+                  <div><p class="text-sm font-medium text-zinc-200">Food & Dining</p><p class="text-xs text-zinc-600">Today</p></div>
+                </div>
+                <p class="font-mono font-bold text-rose-400 text-sm">-EGP 180</p>
+              </div>
+              <div class="flex items-center justify-between py-3 border-b border-white/[0.04]">
+                <div class="flex items-center gap-3">
+                  <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+                  <div><p class="text-sm font-medium text-zinc-200">Salary</p><p class="text-xs text-zinc-600">May 1</p></div>
+                </div>
+                <p class="font-mono font-bold text-emerald-400 text-sm">+EGP 8,500</p>
+              </div>
+              <div class="flex items-center justify-between py-3 border-b border-white/[0.04]">
+                <div class="flex items-center gap-3">
+                  <div class="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+                  <div><p class="text-sm font-medium text-zinc-200">Transport</p><p class="text-xs text-zinc-600">Apr 30</p></div>
+                </div>
+                <p class="font-mono font-bold text-rose-400 text-sm">-EGP 45</p>
+              </div>
+              <div class="flex items-center justify-between py-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-2.5 h-2.5 rounded-full bg-violet-500"></div>
+                  <div><p class="text-sm font-medium text-zinc-200">Bills</p><p class="text-xs text-zinc-600">Apr 28</p></div>
+                </div>
+                <p class="font-mono font-bold text-rose-400 text-sm">-EGP 350</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Download CTA Section ====== -->
+    <section id="download" class="py-24 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/[0.03] to-transparent"></div>
+      <div class="relative max-w-3xl mx-auto px-6 text-center">
+        <div class="bg-dark-2 rounded-3xl p-12 ring-1 ring-amber-500/10 relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-amber-500/5 blur-2xl"></div>
+          <div class="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-amber-500/5 blur-2xl"></div>
+
+          <div class="relative">
+            <div class="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-6 shadow-xl shadow-amber-500/20 ring-1 ring-amber-500/20">
+              <img src="../../public/logo.png" alt="FinTrack" class="w-full h-full object-cover scale-[1.9]" />
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Ready to take control?</h2>
+            <p class="text-zinc-400 mb-8 max-w-lg mx-auto">Download FinTrack for free. No account required, no credit card, no strings attached. Just install and start tracking.</p>
+
+            <a href="Finance Tracker_1.0.0_x64-setup.exe" download class="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-bold text-lg px-10 py-5 rounded-2xl transition-all shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 active:scale-[0.98]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Download for Windows
+            </a>
+
+            <div class="flex items-center justify-center gap-6 mt-6 text-sm text-zinc-500">
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Free forever
+              </span>
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                No signup
+              </span>
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                ~36 MB
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Contact Section ====== -->
+    <section id="contact" class="py-24 relative">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <span class="text-amber-500 font-semibold text-sm uppercase tracking-wider">Contact</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3 mb-4">Get in touch</h2>
+          <p class="text-zinc-400">Have a question, feedback, or feature request? Send me a message.</p>
+        </div>
+
+        <div class="bg-dark-2 rounded-2xl p-8 ring-1 ring-white/[0.06]">
+          <form action="https://formspree.io/f/mredvzka" method="POST" class="space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Name</label>
+                <input type="text" name="name" required placeholder="Your name"
+                  class="w-full px-4 py-3 rounded-xl border border-white/[0.08] bg-white/[0.03] text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500/40 transition-all" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Email</label>
+                <input type="email" name="email" required placeholder="your@email.com"
+                  class="w-full px-4 py-3 rounded-xl border border-white/[0.08] bg-white/[0.03] text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500/40 transition-all" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Message</label>
+              <textarea name="message" required rows="4" placeholder="Your message..."
+                class="w-full px-4 py-3 rounded-xl border border-white/[0.08] bg-white/[0.03] text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500/40 transition-all resize-none"></textarea>
+            </div>
+            <button type="submit"
+              class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-bold text-sm py-3.5 rounded-xl transition-all shadow-lg shadow-amber-500/20 active:scale-[0.98]">
+              Send Message
+            </button>
+          </form>
+
+          <div class="flex items-center justify-center gap-6 mt-8 pt-6 border-t border-white/[0.06]">
+            <a href="https://www.linkedin.com/in/ziadyasserasr" target="_blank" class="flex items-center gap-2 text-zinc-500 hover:text-amber-400 transition-colors">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span class="text-sm font-medium">LinkedIn</span>
+            </a>
+            <a href="https://github.com/ziadasr" target="_blank" class="flex items-center gap-2 text-zinc-500 hover:text-amber-400 transition-colors">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              <span class="text-sm font-medium">GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Footer ====== -->
+    <footer class="border-t border-white/[0.04] py-8">
+      <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-7 h-7 rounded-lg overflow-hidden">
+            <img src="../../public/logo.png" alt="FinTrack" class="w-full h-full object-cover scale-[1.9]" />
+          </div>
+          <span class="text-sm font-semibold text-zinc-400">FinTrack</span>
+        </div>
+        <p class="text-sm text-zinc-600">Built with React, Tauri &amp; .NET. Your finances, your device, your control.</p>
+      </div>
+    </footer>
+
+    <!-- Smooth scroll for anchor links -->
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          const el = document.querySelector(a.getAttribute('href'));
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    </script>
+  </body>
+</html>

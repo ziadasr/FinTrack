@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-primary-50: #fffbeb;
+  --color-primary-100: #fef3c7;
+  --color-primary-200: #fde68a;
+  --color-primary-300: #fcd34d;
+  --color-primary-400: #fbbf24;
+  --color-primary-500: #f59e0b;
+  --color-primary-600: #d97706;
+  --color-primary-700: #b45309;
+  --color-primary-800: #92400e;
+  --color-primary-900: #78350f;
+
+  --color-surface: #141414;
+  --color-surface-raised: #1c1c1c;
+  --color-surface-overlay: #222222;
+
+  --color-income: #34d399;
+  --color-income-light: rgba(52, 211, 153, 0.1);
+  --color-expense: #fb7185;
+  --color-expense-light: rgba(251, 113, 133, 0.1);
+
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-muted: #71717a;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --shadow-card: 0 0 0 1px rgb(255 255 255 / 0.04), 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.2);
+  --shadow-md: 0 0 0 1px rgb(255 255 255 / 0.05), 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+  --shadow-lg: 0 0 0 1px rgb(255 255 255 / 0.05), 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.2);
+  --shadow-xl: 0 0 0 1px rgb(255 255 255 / 0.05), 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.2);
+  --shadow-glow: 0 0 20px -4px rgb(245 158 11 / 0.3);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}
+
+select,
+select option {
+  background-color: #1a1a1a;
+  color: #e4e4e7;
+}
+
+select option:checked {
+  background-color: #2a2a2a;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0d0d0d;
+  color: #e5e5e5;
+}
+
+::selection {
+  background-color: rgb(245 158 11 / 0.25);
+  color: #fef3c7;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.4;
+  filter: invert(1);
+  transition: opacity 0.15s;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.7;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-scale {
+  from { opacity: 0; transform: scale(0.97) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-slide-up {
+  animation: slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #1a1a1a 25%, #252525 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.glass {
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+}
+
+.glass-strong {
+  background: rgba(20, 20, 20, 0.9);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+}
+
+.gradient-mesh {
+  background:
+    radial-gradient(at 20% 80%, rgb(245 158 11 / 0.03) 0px, transparent 50%),
+    radial-gradient(at 80% 20%, rgb(251 113 133 / 0.02) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgb(52 211 153 / 0.015) 0px, transparent 50%);
+}
+
+/* RTL support */
+[dir="rtl"] {
+  font-family: "Inter", "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+}
+
+[dir="rtl"] .font-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+[dir="rtl"] input[type="number"],
+[dir="rtl"] input[type="date"] {
+  direction: ltr;
+  text-align: right;
+}
+
+[dir="rtl"] aside {
+  border-right: 0;
+  border-left: 1px solid rgb(255 255 255 / 0.06);
+}

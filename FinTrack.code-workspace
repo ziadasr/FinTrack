@@ -1,0 +1,20 @@
+{
+  "folders": [
+    {
+      "name": "Frontend",
+      "path": "."
+    },
+    {
+      "name": "Backend",
+      "path": "backend"
+    }
+  ],
+  "settings": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "[csharp]": {
+      "editor.defaultFormatter": "ms-dotnettools.csharp",
+      "editor.formatOnSave": true
+    }
+  }
+}
